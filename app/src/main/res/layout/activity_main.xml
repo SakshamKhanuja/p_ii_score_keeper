@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:overScrollMode="never"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/keeper_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <!--Contains the entire Layout-->
+        <LinearLayout
+            style="@style/BasicLayout"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!--Team Container-->
+            <LinearLayout
+                style="@style/BasicLayout"
+                android:layout_marginBottom="8dp">
+
+                <!--Team A-->
+                <LinearLayout
+                    style="@style/TeamContainerStyle"
+                    android:layout_marginEnd="16dp">
+
+                    <!--Team A Label-->
+                    <TextView
+                        style="@style/TeamLabelStyle"
+                        android:text="@string/labelTeamA" />
+
+                    <!--Team A Scoreboard-->
+                    <LinearLayout style="@style/CenteredBasicLayout">
+
+                        <TextView
+                            style="@style/ScoreBoardStyle"
+                            android:text="@string/defaultScore" />
+
+                        <TextView
+                            style="@style/ScoreBoardDivider"
+                            android:text="@string/divider" />
+
+                        <TextView
+                            style="@style/ScoreBoardStyle"
+                            android:text="@string/defaultScore" />
+
+                    </LinearLayout>
+
+                    <!--Team A Overs and Balls Left-->
+                    <LinearLayout
+                        style="@style/BasicLayout"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            style="@style/TypeScoreContainerStyle"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/typeOver" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultOver" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TypeScoreContainerStyle">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/typeBallsLeft" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultBalls" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--Team A Run Rate and Required Run Rate-->
+                    <LinearLayout
+                        style="@style/BasicLayout"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            style="@style/TypeScoreContainerStyle"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/typeCurrentRunRate" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultRR" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TypeScoreContainerStyle">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/typeRequiredRunRate" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultRQRR" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--Team A No and wide balls-->
+                    <LinearLayout style="@style/BasicLayout">
+
+                        <LinearLayout
+                            style="@style/TypeScoreContainerStyleFill"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/extraNoBall" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultNoBall" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TypeScoreContainerStyleFill">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/extraWideBall" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultWide" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--Team B-->
+                <LinearLayout style="@style/TeamContainerStyle">
+
+                    <!--Team B Label-->
+                    <TextView
+                        style="@style/TeamLabelStyle"
+                        android:text="@string/labelTeamB" />
+
+
+                    <!--Team B Scoreboard-->
+                    <LinearLayout style="@style/CenteredBasicLayout">
+
+                        <TextView
+                            style="@style/ScoreBoardStyle"
+                            android:text="@string/defaultScore" />
+
+                        <TextView
+                            style="@style/ScoreBoardDivider"
+                            android:text="@string/divider" />
+
+                        <TextView
+                            style="@style/ScoreBoardStyle"
+                            android:text="@string/defaultScore" />
+
+                    </LinearLayout>
+
+                    <!--Team B Overs and Balls Left-->
+                    <LinearLayout
+                        style="@style/BasicLayout"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            style="@style/TypeScoreContainerStyle"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/typeOver" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultOver" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TypeScoreContainerStyle">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/typeBallsLeft" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultBalls" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--Team B Run Rate and Required Run Rate-->
+                    <LinearLayout
+                        style="@style/BasicLayout"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            style="@style/TypeScoreContainerStyle"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/typeCurrentRunRate" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultRR" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TypeScoreContainerStyle">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/typeRequiredRunRate" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultRQRR" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--Team B No and wide balls-->
+                    <LinearLayout style="@style/BasicLayout">
+
+                        <LinearLayout
+                            style="@style/TypeScoreContainerStyleFill"
+                            android:layout_marginEnd="16dp">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/extraNoBall" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultNoBall" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TypeScoreContainerStyleFill">
+
+                            <TextView
+                                style="@style/TypeHeadingStyle"
+                                android:text="@string/extraWideBall" />
+
+                            <TextView
+                                style="@style/TypeStyle"
+                                android:text="@string/defaultWide" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--2nd Innings Status-->
+            <TextView
+                style="@style/BasicView"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/shape_rectangle"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="Need 17 runs to win from 6 balls." />
+
+            <!--Ball Delivery and Runs dashboard-->
+            <LinearLayout
+                style="@style/BasicView"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_rectangle_outline"
+                android:gravity="center_horizontal"
+                android:padding="16dp">
+
+                <!--Types of delivery-->
+                <LinearLayout
+                    style="@style/BasicView"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/HeadingStyle"
+                        android:text="@string/labelDelivery" />
+
+                    <Button
+                        style="@style/DeliveryType"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/deliveryValid" />
+
+                    <Button
+                        style="@style/DeliveryType"
+                        android:layout_marginVertical="16dp"
+                        android:text="@string/deliverWideBall" />
+
+                    <Button
+                        style="@style/DeliveryType"
+                        android:text="@string/deliveryNoBall" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/BasicView"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/HeadingStyle"
+                        android:text="@string/labelRunsScored" />
+
+                    <LinearLayout
+                        style="@style/BasicView"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal">
+
+                        <Button
+                            style="@style/RunsStyle"
+                            android:text="@string/runOne" />
+
+                        <Button
+                            style="@style/RunsStyle"
+                            android:layout_marginHorizontal="16dp"
+                            android:text="@string/runTwo" />
+
+                        <Button
+                            style="@style/RunsStyle"
+                            android:text="@string/runThree" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/BasicLayout"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_horizontal">
+
+                        <Button
+                            style="@style/RunsStyle"
+                            android:text="@string/runFour" />
+
+                        <Button
+                            style="@style/RunsStyle"
+                            android:layout_marginHorizontal="16dp"
+                            android:text="@string/runFive" />
+
+                        <Button
+                            style="@style/RunsStyle"
+                            android:text="@string/runSix" />
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/ripple_wicket"
+                        android:paddingHorizontal="32dp"
+                        android:text="@string/wicket" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_drawable_reset"
+                android:padding="16dp"
+                android:text="@string/reset"
+                android:textColor="@color/colorPrimaryDark"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ImageView
+        android:layout_marginBottom="32dp"
+        android:layout_above="@id/question_container"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ic_bat"
+        style="@style/BasicView"/>
+
+    <!--User has to pick a Team to bat first.-->
+    <LinearLayout
+        android:id="@+id/question_container"
+        style="@style/BasicView"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_rectangle"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            style="@style/BasicView"
+            android:text="@string/question"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            style="@style/BasicView"
+            android:layout_marginTop="16dp">
+
+            <Button
+                style="@style/TeamButtonStyle"
+                android:text="@string/labelTeamA" />
+
+            <Button
+                style="@style/TeamButtonStyle"
+                android:layout_marginStart="16dp"
+                android:text="@string/labelTeamB" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

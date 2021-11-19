@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#051B33</color>
+    <color name="colorAccent">@android:color/white</color>
+    <color name="colorText">#A6FFFFFF</color>
+
+    <!--UI Elements-->
+    <color name="colorBoundary">#70FFFFFF</color>
+    <color name="colorBackground">#36FFFFFF</color>
+    <color name="colorWicket">#5CC62828</color>
+
+    <!--Text Elements-->
+    <color name="colorType">@android:color/white</color>
+</resources>

@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Score Keeper</string>
+    
+    <!--Pick Position-->
+    <string name="question">Who is going to bat first?</string>
+
+    <!--Team Label-->
+    <string name="labelTeamA">Team A</string>
+    <string name="labelTeamB">Team B</string>
+    <string name="labelDelivery">Delivery</string>
+    <string name="labelRunsScored">Runs Scored</string>
+
+    <!--Delivery Types-->
+    <string name="deliveryValid">Valid</string>
+    <string name="deliveryNoBall">No Ball</string>
+    <string name="deliverWideBall">Wide</string>
+
+    <!--Defaults-->
+    <string name="defaultScore">0</string>
+    <string name="defaultWickets">0</string>
+    <string name="defaultNoBall">0</string>
+    <string name="defaultWide">0</string>
+    <string name="defaultRR">0.0</string>
+    <string name="defaultRQRR">NA</string>
+    <string name="defaultOver">0.0</string>
+    <string name="defaultBalls">18</string>
+
+    <!--Runs-->
+    <string name="runZero">0</string>
+    <string name="runOne">1</string>
+    <string name="runTwo">2</string>
+    <string name="runThree">3</string>
+    <string name="runFour">4</string>
+    <string name="runFive">5</string>
+    <string name="runSix">6</string>
+    <string name="wicket">Wicket</string>
+
+    <!--Score Divider-->
+    <string name="divider">-</string>
+
+    <!--Type Strings-->
+    <string name="typeOver">Over</string>
+    <string name="typeBallsLeft">Balls</string>
+    <string name="typeCurrentRunRate">RR</string>
+    <string name="typeRequiredRunRate">Rq.RR</string>
+
+    <!--Extras Strings-->
+    <string name="extraNoBall">No.ball</string>
+    <string name="extraWideBall">Wide</string>
+
+    <!--Headings-->
+    <string name="headingExtras">Extras</string>
+
+    <!--Reset Button-->
+    <string name="reset">Reset</string>
+</resources>

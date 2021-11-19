@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Base Application Theme-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <!--Basic View LayoutParams-->
+    <style name="BasicView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--Layout parameters for ViewGroup-->
+    <style name="BasicLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--Vertical LinearLayout-->
+    <style name="VerticalBasicLayout" parent="BasicLayout">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!--Centered BasicLayout-->
+    <style name="CenteredBasicLayout" parent="BasicLayout">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">@drawable/shape_rectangle_fill</item>
+    </style>
+
+    <style name="ExtrasLayout" parent="BasicLayout">
+        <item name="android:background">@drawable/shape_rectangle_fill</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <!--Team Container Style-->
+    <style name="TeamContainerStyle">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/shape_rectangle_outline</item>
+    </style>
+
+    <style name="TypeScoreContainerStyle" parent="TeamContainerStyle">
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TypeScoreContainerStyleFill" parent="TypeScoreContainerStyle">
+        <item name="android:background">@drawable/shape_rectangle_fill</item>
+    </style>
+
+    <!--Score Board Element-->
+    <style name="ScoreBoardStyle" parent="BasicView">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorType</item>
+    </style>
+
+    <!--Headings-->
+    <style name="HeadingStyle" parent="BasicView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <!--Runs Style-->
+    <style name="RunsStyle">
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/ripple_drawable_circular</item>
+    </style>
+
+    <!--Delivery Type-->
+    <style name="DeliveryType">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/ripple_drawable</item>
+    </style>
+
+    <!--Team Label Style-->
+    <style name="TeamLabelStyle" parent="TypeHeadingStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <!--Type Element-->
+    <style name="TypeStyle" parent="BasicView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Type Heading-->
+    <style name="TypeHeadingStyle" parent="TypeStyle">
+        <item name="android:textColor">@color/colorType</item>
+    </style>
+
+    <!--Score Board Divider-->
+    <style name="ScoreBoardDivider" parent="ScoreBoardStyle">
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+    </style>
+
+    <!--Team Button Style-->
+    <style name="TeamButtonStyle" parent="BasicView">
+        <item name="android:background">@drawable/ripple_drawable_blue</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:textColor">@color/colorType</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--Divider-->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@color/colorBoundary</item>
+    </style>
+</resources>
