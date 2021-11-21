@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Score Keeper</string>
-    
+
     <!--Pick Position-->
     <string name="question">Who is going to bat first?</string>
 
@@ -9,6 +9,7 @@
     <string name="labelTeamB">Team B</string>
     <string name="labelDelivery">Delivery</string>
     <string name="labelRunsScored">Runs Scored</string>
+    <string name="winnerLabel">Winner</string>
 
     <!--Delivery Types-->
     <string name="deliveryValid">Valid</string>
@@ -22,8 +23,8 @@
     <string name="defaultWide">0</string>
     <string name="defaultRR">0.0</string>
     <string name="defaultRQRR">NA</string>
-    <string name="defaultOver">0.0</string>
-    <string name="defaultBalls">18</string>
+    <string name="defaultOver">0</string>
+    <string name="defaultDeliveries">24</string>
 
     <!--Runs-->
     <string name="runZero">0</string>
@@ -33,7 +34,7 @@
     <string name="runFour">4</string>
     <string name="runFive">5</string>
     <string name="runSix">6</string>
-    <string name="wicket">Wicket</string>
+    <string name="wicket">W</string>
 
     <!--Score Divider-->
     <string name="divider">-</string>
@@ -53,4 +54,7 @@
 
     <!--Reset Button-->
     <string name="reset">Reset</string>
+
+    <string name="statusTeamA">Team A is Batting right now.</string>
+    <string name="statusTeamB">Team B is Batting right now.</string>
 </resources>

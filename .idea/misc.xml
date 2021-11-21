@@ -3,16 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ic_ball.xml" value="0.33076923076923076" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ic_bat.xml" value="0.33076923076923076" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ic_shot.xml" value="0.33076923076923076" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ic_trophy.xml" value="0.29615384615384616" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ripple_delivery.xml" value="0.3106837606837607" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ripple_drawable.xml" value="0.3106837606837607" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ripple_drawable_blue.xml" value="0.33076923076923076" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ripple_drawable_circular.xml" value="0.3106837606837607" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ripple_drawable_reset.xml" value="0.33076923076923076" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ripple_runs_enabled.xml" value="0.3106837606837607" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/ripple_wicket.xml" value="0.3106837606837607" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_ball.xml" value="0.3106837606837607" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_delivery_disabled.xml" value="0.3106837606837607" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_delivery_selected_no.xml" value="0.33076923076923076" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_delivery_selected_wide.xml" value="0.33076923076923076" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_disabled.xml" value="0.3106837606837607" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_rectangle.xml" value="0.3106837606837607" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_rectangle_fill.xml" value="0.3106837606837607" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_rectangle_outline.xml" value="0.3106837606837607" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_rectangle_outline_enabled.xml" value="0.33076923076923076" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_runs_disabled.xml" value="0.3106837606837607" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_selected_valid.xml" value="0.33076923076923076" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_team_name.xml" value="0.29259259259259257" />
+        <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/drawable/shape_winner.xml" value="0.33076923076923076" />
         <entry key="..\:/Users/ssk/Documents/Udacity/Android/Android Basics Nanodegree by Google/User Input/Project - Score Keeper/app/src/main/res/layout/activity_main.xml" value="0.3175213675213675" />
       </map>
     </option>

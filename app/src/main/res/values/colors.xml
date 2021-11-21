@@ -11,4 +11,7 @@
 
     <!--Text Elements-->
     <color name="colorType">@android:color/white</color>
+
+
+    <color name="colorDisabled">#3CFFFFFF</color>
 </resources>
