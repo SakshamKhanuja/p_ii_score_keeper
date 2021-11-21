@@ -124,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private int battingTeam = 0;
 
-    // Represents how many deliveries per innings.
-    private int totalDeliveries = 24;
-
     // Default score for Team A.
     private int scoreTeamA = 0;
 
@@ -157,10 +154,6 @@ public class MainActivity extends AppCompatActivity {
     // Number of no balls delivered by Team A to Team B.
     private int noBallTeamB = 0;
 
-    private int maxWickets = 4;
-    private int maxOvers = 6;
-    private boolean teamAAllOut = false;
-    private boolean teamBAllOut = false;
     private int ballsLeftTeamA = 24;
     private int ballsLeftTeamB = 24;
 
@@ -259,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
 
         updateOverCount();
 
-        boolean isLastBall = countdownDelivery();
+        countdownDelivery();
 
         enableDisableViews(false, R.drawable.shape_delivery_selected_valid, deliveryValid);
         enableDisableViews(true, R.drawable.ripple_runs_enabled, runZero, runOne, runTwo,
@@ -271,16 +264,12 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Decrements the number of balls left by 1.
-     *
-     * @return true if all balls are delivered, otherwise false.
      */
-    private boolean countdownDelivery() {
+    private void countdownDelivery() {
         if (battingTeam == 1) {
             ballsLeftTeamATextView.setText(String.valueOf(--ballsLeftTeamA));
-            return (ballsLeftTeamA == 0);
         } else {
             ballsLeftTeamBTextView.setText(String.valueOf(--ballsLeftTeamB));
-            return (ballsLeftTeamB == 0);
         }
     }
 
@@ -385,9 +374,8 @@ public class MainActivity extends AppCompatActivity {
      * Shows the user who won the match.
      */
     private void setWinningTeam() {
-        // Show the winning layout.
-        winningContainerLayout.setVisibility(View.VISIBLE);
 
+        setWinningEvent();
         // Check if Team A has won the match.
         if (scoreTeamA > scoreTeamB) {
             // Team A WON!
@@ -396,6 +384,16 @@ public class MainActivity extends AppCompatActivity {
             // Team B WON!
             winningTeamTextView.setText(getString(R.string.labelTeamB));
         }
+    }
+
+    private void setWinningEvent() {
+        // Show the winning layout.
+        winningContainerLayout.setVisibility(View.VISIBLE);
+        // Disable all runs and delivery
+        enableDisableViews(false, R.drawable.shape_runs_disabled, runZero, runOne, runTwo,
+                runThree, runFour, runFive, runSix, wicket);
+        enableDisableViews(false, R.drawable.shape_rectangle_outline, deliveryValid,
+                deliveryWide, deliveryNo);
     }
 
     /**
@@ -407,6 +405,7 @@ public class MainActivity extends AppCompatActivity {
 
         enableDeliveryDisableRun();
 
+        int maxWickets = 4;
         if (battingTeam == 1) {
 
             // Team A lost its wicket.
@@ -475,14 +474,47 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param runs scored in a single delivery.
      */
-    private void addRuns(int runs) {
+    private boolean addRuns(int runs) {
         if (battingTeam == 1) {
             scoreTeamA += runs;
             scoreTeamATextView.setText(String.valueOf(scoreTeamA));
+
+            // Check if Team B has finished their batting.
+            if (scoreTeamB != 0 || wicketsTeamB != 0 || ballsLeftTeamB != 24) {
+                if (scoreTeamA > scoreTeamB) {
+                    setWinningEvent();
+                    winningTeamTextView.setText(getString(R.string.labelTeamA));
+                    return true;
+                }
+            } else if (ballsLeftTeamA == 0) {
+                // Team B will bat now.
+                battingTeam = 2;
+                // Reset values for var. ballCount and var. over count.
+                ballCount = 0;
+                overCount = 0;
+                setupViews();
+            }
         } else {
             scoreTeamB += runs;
             scoreTeamBTextView.setText(String.valueOf(scoreTeamB));
+
+            // Check if Team A has finished their batting.
+            if (scoreTeamA != 0 || wicketsTeamA != 0 || ballsLeftTeamA != 24) {
+                if (scoreTeamB > scoreTeamA) {
+                    setWinningEvent();
+                    winningTeamTextView.setText(getString(R.string.labelTeamB));
+                    return true;
+                }
+            } else if (ballsLeftTeamB == 0) {
+                // Team A will bat now.
+                battingTeam = 1;
+                // Reset values for var. ballCount and var. over count.
+                ballCount = 0;
+                overCount = 0;
+                setupViews();
+            }
         }
+        return false;
     }
 
     /**
@@ -494,7 +526,7 @@ public class MainActivity extends AppCompatActivity {
     public void wideDeliveryWasThrown(View view) {
 
         // Adding 1 run to the batting team.
-        addRuns(1);
+        boolean hasSomeTeamWon = addRuns(1);
 
         if (battingTeam == 1) {
             wideBallTeamATextView.setText(String.valueOf(++wideBallTeamA));
@@ -502,13 +534,15 @@ public class MainActivity extends AppCompatActivity {
             wideBallTeamBTextView.setText(String.valueOf(++wideBallTeamB));
         }
 
-        enableDisableViews(false, R.drawable.shape_delivery_selected_wide, deliveryWide);
-        enableDisableViews(true, R.drawable.ripple_runs_enabled, runZero, runOne, runTwo,
-                runThree, runFour, runFive);
-        enableDisableViews(false, R.drawable.shape_runs_disabled, runSix);
-        enableDisableViews(true, R.drawable.ripple_wicket, wicket);
-        enableDisableViews(false, R.drawable.shape_rectangle_outline, deliveryValid,
-                deliveryNo);
+        if (!hasSomeTeamWon) {
+            enableDisableViews(false, R.drawable.shape_delivery_selected_wide, deliveryWide);
+            enableDisableViews(true, R.drawable.ripple_runs_enabled, runZero, runOne, runTwo,
+                    runThree, runFour, runFive);
+            enableDisableViews(false, R.drawable.shape_runs_disabled, runSix);
+            enableDisableViews(true, R.drawable.ripple_wicket, wicket);
+            enableDisableViews(false, R.drawable.shape_rectangle_outline, deliveryValid,
+                    deliveryNo);
+        }
     }
 
     /**
@@ -522,7 +556,7 @@ public class MainActivity extends AppCompatActivity {
     public void noBallWasThrown(View view) {
 
         // Adding 1 run to the batting team.
-        addRuns(1);
+        boolean hasSomeTeamWon = addRuns(1);
 
         if (battingTeam == 1) {
             noBallTeamATextView.setText(String.valueOf(++noBallTeamA));
@@ -530,12 +564,14 @@ public class MainActivity extends AppCompatActivity {
             noBallTeamBTextView.setText(String.valueOf(++noBallTeamB));
         }
 
-        enableDisableViews(false, R.drawable.shape_delivery_selected_no, deliveryNo);
-        enableDisableViews(true, R.drawable.ripple_runs_enabled, runZero, runOne, runTwo,
-                runThree, runFour, runFive, runSix);
-        enableDisableViews(false, R.drawable.shape_rectangle_outline, deliveryWide,
-                deliveryValid);
-        enableDisableViews(false, R.drawable.shape_runs_disabled, wicket);
+        if (!hasSomeTeamWon) {
+            enableDisableViews(false, R.drawable.shape_delivery_selected_no, deliveryNo);
+            enableDisableViews(true, R.drawable.ripple_runs_enabled, runZero, runOne, runTwo,
+                    runThree, runFour, runFive, runSix);
+            enableDisableViews(false, R.drawable.shape_rectangle_outline, deliveryWide,
+                    deliveryValid);
+            enableDisableViews(false, R.drawable.shape_runs_disabled, wicket);
+        }
     }
 
     /**
@@ -591,6 +627,53 @@ public class MainActivity extends AppCompatActivity {
         // Show the Reset Button
         reset.setVisibility(View.VISIBLE);
         setupViews();
+    }
+
+
+    public void resetScoreKeeper(View view) {
+        scoreTeamA = scoreTeamB = 0;
+        scoreTeamATextView.setText(String.valueOf(scoreTeamA));
+        scoreTeamBTextView.setText(String.valueOf(scoreTeamB));
+
+        wicketsTeamA = wicketsTeamB = 0;
+        wicketsTeamATextView.setText(String.valueOf(wicketsTeamA));
+        wicketsTeamBTextView.setText(String.valueOf(wicketsTeamB));
+
+        ballsLeftTeamA = ballsLeftTeamB = 24;
+        ballsLeftTeamATextView.setText(String.valueOf(ballsLeftTeamA));
+        ballsLeftTeamBTextView.setText(String.valueOf(ballsLeftTeamB));
+
+        overCount = 0;
+        overCountTeamATextView.setText(String.valueOf(overCount));
+        overCountTeamBTextView.setText(String.valueOf(overCount));
+
+        ballCount = 0;
+
+        wideBallTeamA = wideBallTeamB = 0;
+        wideBallTeamATextView.setText(String.valueOf(wideBallTeamA));
+        wideBallTeamBTextView.setText(String.valueOf(wideBallTeamB));
+
+        noBallTeamB = noBallTeamA = 0;
+        noBallTeamATextView.setText(String.valueOf(noBallTeamA));
+        noBallTeamBTextView.setText(String.valueOf(noBallTeamB));
+
+        // Hide winner layout.
+        winningContainerLayout.setVisibility(View.GONE);
+        // Show team picker layout.
+        linearLayoutQuestion.setVisibility(View.VISIBLE);
+
+        // Disable all Run and Delivery Buttons.
+        enableDisableViews(false, R.drawable.shape_runs_disabled, runZero, runOne, runTwo,
+                runThree, runFour, runFive, runSix, wicket);
+        enableDisableViews(false, R.drawable.shape_rectangle_outline, deliveryValid,
+                deliveryWide, deliveryNo);
+
+        // Hide team status.
+        statusTeamA.setVisibility(View.GONE);
+        statusTeamB.setVisibility(View.GONE);
+
+        // Hide reset button.
+        reset.setVisibility(View.GONE);
     }
 
     /**

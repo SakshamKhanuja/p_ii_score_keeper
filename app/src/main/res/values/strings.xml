@@ -21,8 +21,6 @@
     <string name="defaultWickets">0</string>
     <string name="defaultNoBall">0</string>
     <string name="defaultWide">0</string>
-    <string name="defaultRR">0.0</string>
-    <string name="defaultRQRR">NA</string>
     <string name="defaultOver">0</string>
     <string name="defaultDeliveries">24</string>
 
@@ -42,12 +40,11 @@
     <!--Type Strings-->
     <string name="typeOver">Over</string>
     <string name="typeBallsLeft">Balls</string>
-    <string name="typeCurrentRunRate">RR</string>
-    <string name="typeRequiredRunRate">Rq.RR</string>
 
     <!--Extras Strings-->
     <string name="extraNoBall">No.ball</string>
     <string name="extraWideBall">Wide</string>
+    <string name="trophy">Trophy</string>
 
     <!--Headings-->
     <string name="headingExtras">Extras</string>

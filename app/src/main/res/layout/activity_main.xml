@@ -94,36 +94,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!--Team A Run Rate and Required Run Rate-->
-                <LinearLayout
-                    style="@style/BasicLayout"
-                    android:layout_marginBottom="16dp">
-
-                    <LinearLayout
-                        style="@style/TypeScoreContainerStyle"
-                        android:layout_marginEnd="16dp">
-
-                        <TextView
-                            style="@style/TypeHeadingStyle"
-                            android:text="@string/typeCurrentRunRate" />
-
-                        <TextView
-                            style="@style/TypeStyle"
-                            android:text="@string/defaultRR" />
-
-                    </LinearLayout>
-
-                    <LinearLayout style="@style/TypeScoreContainerStyle">
-
-                        <TextView
-                            style="@style/TypeHeadingStyle"
-                            android:text="@string/typeRequiredRunRate" />
-
-                        <TextView
-                            style="@style/TypeStyle"
-                            android:text="@string/defaultRQRR" />
-                    </LinearLayout>
-                </LinearLayout>
 
                 <!--Team A No and wide balls-->
                 <LinearLayout style="@style/BasicLayout">
@@ -230,37 +200,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!--Team B Run Rate and Required Run Rate-->
-                <LinearLayout
-                    style="@style/BasicLayout"
-                    android:layout_marginBottom="16dp">
-
-                    <LinearLayout
-                        style="@style/TypeScoreContainerStyle"
-                        android:layout_marginEnd="16dp">
-
-                        <TextView
-                            style="@style/TypeHeadingStyle"
-                            android:text="@string/typeCurrentRunRate" />
-
-                        <TextView
-                            style="@style/TypeStyle"
-                            android:text="@string/defaultRR" />
-
-                    </LinearLayout>
-
-                    <LinearLayout style="@style/TypeScoreContainerStyle">
-
-                        <TextView
-                            style="@style/TypeHeadingStyle"
-                            android:text="@string/typeRequiredRunRate" />
-
-                        <TextView
-                            style="@style/TypeStyle"
-                            android:text="@string/defaultRQRR" />
-                    </LinearLayout>
-                </LinearLayout>
-
                 <!--Team B No and wide balls-->
                 <LinearLayout style="@style/BasicLayout">
 
@@ -339,6 +278,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/trophy"
                 android:src="@drawable/ic_trophy" />
 
         </LinearLayout>
@@ -495,7 +435,8 @@
                         style="@style/RunStyle"
                         android:layout_marginEnd="8dp"
                         android:onClick="addZero"
-                        android:text="@string/runZero" />
+                        android:text="@string/runZero"
+                        tools:ignore="UsingOnClickInXml" />
 
                     <Button
                         android:id="@+id/button_wicket"
@@ -515,11 +456,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/ripple_drawable_reset"
+            android:onClick="resetScoreKeeper"
             android:paddingHorizontal="32dp"
             android:paddingVertical="16dp"
             android:text="@string/reset"
             android:textColor="@color/colorPrimaryDark"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:ignore="UsingOnClickInXml" />
 
     </LinearLayout>
 
