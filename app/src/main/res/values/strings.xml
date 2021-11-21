@@ -10,6 +10,7 @@
     <string name="labelDelivery">Delivery</string>
     <string name="labelRunsScored">Runs Scored</string>
     <string name="winnerLabel">Winner</string>
+    <string name="bothTeamWon">Team A and B</string>
 
     <!--Delivery Types-->
     <string name="deliveryValid">Valid</string>

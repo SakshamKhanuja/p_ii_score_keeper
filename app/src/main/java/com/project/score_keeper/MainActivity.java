@@ -11,6 +11,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * The application keeps the following tally of two Teams, A and B:
+ * <p>
+ * 1. Runs scored
+ * 2. Wickets taken - Maximum number of wickets taken is 4, as there are 4 members per team.
+ * 3. Number of valid deliveries - 24.
+ * 4. Number of "Wide" deliveries.
+ * 5. Number of "No Ball" deliveries.
+ * <p>
+ * Based on basic rules of Cricket, a Team (in some cases both) is the Winner.
+ */
 public class MainActivity extends AppCompatActivity {
 
     // Indicates Team A is currently batting.
@@ -40,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * 1. Extra 1 Run awarded to the batting Team.
      * 2. Current delivery is NOT counted.
-     * 3. Batting person is considered OUT only he/she was initial OUT for running between the
-     *  wickets.
+     * 3. Batting person is NOT OUT in any case. (For this App)
      */
     private Button deliveryNo;
 
@@ -69,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     // Pressing this Button adds 1 wicket (person Batting is OUT) to the current Batting Team.
     private Button wicket;
 
-    // Provides user to pick a Team that bats first.
+    // Provides user to pick which Team bats first.
     private LinearLayout linearLayoutQuestion;
 
     // Shows the total runs scored by Team A.
@@ -108,13 +118,11 @@ public class MainActivity extends AppCompatActivity {
     // Shows the number of deliveries left for Team B to bat on.
     private TextView ballsLeftTeamBTextView;
 
-    // Contains info. regarding the result of the match.
+    // This layout contains info. about which Team has won the game.
     private LinearLayout winningContainerLayout;
 
     // Shows which Team has won the match.
     private TextView winningTeamTextView;
-
-    // Scoreboard
 
     /*
      * Represents which Team is currently batting:
@@ -154,7 +162,10 @@ public class MainActivity extends AppCompatActivity {
     // Number of no balls delivered by Team A to Team B.
     private int noBallTeamB = 0;
 
+    // Number of available deliveries for Team A.
     private int ballsLeftTeamA = 24;
+
+    // Number of available deliveries for Team B.
     private int ballsLeftTeamB = 24;
 
     @Override
@@ -249,9 +260,9 @@ public class MainActivity extends AppCompatActivity {
      * @param view is the clicked "Valid" Button.
      */
     public void validDeliveryWasThrown(View view) {
-
+        // Update how many balls are delivered to the current batting Team.
         updateOverCount();
-
+        // Update how many balls are left.
         countdownDelivery();
 
         enableDisableViews(false, R.drawable.shape_delivery_selected_valid, deliveryValid);
@@ -285,13 +296,12 @@ public class MainActivity extends AppCompatActivity {
 
             // Update over and ball count
             if (battingTeam == 1) {
-                overCountTeamATextView.setText(builder.append(overCount).append(".").append(ballCount)
-                        .toString());
+                overCountTeamATextView.setText(builder.append(overCount).append(".")
+                        .append(ballCount).toString());
             } else {
-                overCountTeamBTextView.setText(builder.append(overCount).append(".").append(ballCount)
-                        .toString());
+                overCountTeamBTextView.setText(builder.append(overCount).append(".")
+                        .append(ballCount).toString());
             }
-
         }
         // Checks if this is last ball of the over.
         else if (ballCount == 5) {
@@ -374,18 +384,23 @@ public class MainActivity extends AppCompatActivity {
      * Shows the user who won the match.
      */
     private void setWinningTeam() {
-
         setWinningEvent();
         // Check if Team A has won the match.
         if (scoreTeamA > scoreTeamB) {
             // Team A WON!
             winningTeamTextView.setText(getString(R.string.labelTeamA));
-        } else {
+        } else if (scoreTeamA < scoreTeamB) {
             // Team B WON!
             winningTeamTextView.setText(getString(R.string.labelTeamB));
+        } else {
+            // Draw, both Team WON!
+            winningTeamTextView.setText(getString(R.string.bothTeamWon));
         }
     }
 
+    /**
+     * Shows the Layout containing the winning Team of this match.
+     */
     private void setWinningEvent() {
         // Show the winning layout.
         winningContainerLayout.setVisibility(View.VISIBLE);
@@ -402,57 +417,40 @@ public class MainActivity extends AppCompatActivity {
      * @param view is the clicked "Wicket" Button.
      */
     public void updateWicket(View view) {
-
+        // Disable all run buttons and enable all delivery types.
         enableDeliveryDisableRun();
 
+        // Only 4 people are in a single Team.
         int maxWickets = 4;
         if (battingTeam == 1) {
-
             // Team A lost its wicket.
-
             wicketsTeamATextView.setText(String.valueOf(++wicketsTeamA));
             if (wicketsTeamA == maxWickets) {
-
-                // Team A has lost ALL wickets.
-
                 // Check if Team B has batted already.
                 if (scoreTeamB != 0 || wicketsTeamB != 0 || ballsLeftTeamB != 24) {
-
                     setWinningTeam();
-
                 } else {
                     // Team B will bat now.
                     battingTeam = 2;
-
                     // Reset values for var. ballCount and var. over count.
                     ballCount = 0;
                     overCount = 0;
-
                     setupViews();
                 }
             }
         } else {
-
             // Team B lost its wicket.
-
             wicketsTeamBTextView.setText(String.valueOf(++wicketsTeamB));
             if (wicketsTeamB == maxWickets) {
-
-                // Team B has lost ALL wickets.
-
                 // Check if Team A has batted already.
                 if (scoreTeamA != 0 || wicketsTeamA != 0 || ballsLeftTeamA != 24) {
-
                     setWinningTeam();
-
                 } else {
                     // Team A will bat now.
                     battingTeam = 1;
-
                     // Reset values for var. ballCount and var. over count.
                     ballCount = 0;
                     overCount = 0;
-
                     setupViews();
                 }
             }
@@ -470,20 +468,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Adds run to the current Batting Team.
+     * Adds runs to the current Batting Team.
      *
      * @param runs scored in a single delivery.
+     * @return 'true' if a Team has won this match, otherwise 'false'.
      */
     private boolean addRuns(int runs) {
         if (battingTeam == 1) {
+            // Updating runs of Team A.
             scoreTeamA += runs;
             scoreTeamATextView.setText(String.valueOf(scoreTeamA));
 
             // Check if Team B has finished their batting.
             if (scoreTeamB != 0 || wicketsTeamB != 0 || ballsLeftTeamB != 24) {
+                // Checks if Team A has scored more than Team B.
                 if (scoreTeamA > scoreTeamB) {
                     setWinningEvent();
                     winningTeamTextView.setText(getString(R.string.labelTeamA));
+                    return true;
+                }
+                // Checks if it's a DRAW after the last ball was thrown.
+                else if (scoreTeamA == scoreTeamB && ballsLeftTeamA == 0) {
+                    setWinningEvent();
+                    winningTeamTextView.setText(getString(R.string.bothTeamWon));
                     return true;
                 }
             } else if (ballsLeftTeamA == 0) {
@@ -495,14 +502,22 @@ public class MainActivity extends AppCompatActivity {
                 setupViews();
             }
         } else {
+            // Updating runs of Team B.
             scoreTeamB += runs;
             scoreTeamBTextView.setText(String.valueOf(scoreTeamB));
 
             // Check if Team A has finished their batting.
             if (scoreTeamA != 0 || wicketsTeamA != 0 || ballsLeftTeamA != 24) {
+                // Checks if Team B has scored more than Team A.
                 if (scoreTeamB > scoreTeamA) {
                     setWinningEvent();
                     winningTeamTextView.setText(getString(R.string.labelTeamB));
+                    return true;
+                }
+                // Checks if it's a DRAW after the last ball was thrown.
+                else if (scoreTeamA == scoreTeamB && ballsLeftTeamB == 0) {
+                    setWinningEvent();
+                    winningTeamTextView.setText(getString(R.string.bothTeamWon));
                     return true;
                 }
             } else if (ballsLeftTeamB == 0) {
@@ -528,6 +543,7 @@ public class MainActivity extends AppCompatActivity {
         // Adding 1 run to the batting team.
         boolean hasSomeTeamWon = addRuns(1);
 
+        // Update the number of "Wide" balls counter for the current batting Team.
         if (battingTeam == 1) {
             wideBallTeamATextView.setText(String.valueOf(++wideBallTeamA));
         } else {
@@ -547,9 +563,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * A no delivery was thrown by the baller. Extra run is rewarded to the batting team and,
-     * the delivery is not counted.
-     * <p>
-     * TODO 1 : Complete this function documentation.
+     * the delivery is not counted. The person batting is NOT OUT under any circumstances.
      *
      * @param view is the clicked "Wide" Button.
      */
@@ -558,6 +572,7 @@ public class MainActivity extends AppCompatActivity {
         // Adding 1 run to the batting team.
         boolean hasSomeTeamWon = addRuns(1);
 
+        // Update the number of "No Balls" counter for the current batting Team.
         if (battingTeam == 1) {
             noBallTeamATextView.setText(String.valueOf(++noBallTeamA));
         } else {
@@ -629,30 +644,41 @@ public class MainActivity extends AppCompatActivity {
         setupViews();
     }
 
-
+    /**
+     * Resets the Score Keeper layout.
+     *
+     * @param view is the clicked "Reset" Button.
+     */
     public void resetScoreKeeper(View view) {
+        // Set score of both Team A and Team B to 0.
         scoreTeamA = scoreTeamB = 0;
         scoreTeamATextView.setText(String.valueOf(scoreTeamA));
         scoreTeamBTextView.setText(String.valueOf(scoreTeamB));
 
+        // Set wickets of both Team A and Team B to 0.
         wicketsTeamA = wicketsTeamB = 0;
         wicketsTeamATextView.setText(String.valueOf(wicketsTeamA));
         wicketsTeamBTextView.setText(String.valueOf(wicketsTeamB));
 
+        // Set balls left for both Team A and Team B to 0.
         ballsLeftTeamA = ballsLeftTeamB = 24;
         ballsLeftTeamATextView.setText(String.valueOf(ballsLeftTeamA));
         ballsLeftTeamBTextView.setText(String.valueOf(ballsLeftTeamB));
 
+        // Set overCount entry to 0.
         overCount = 0;
         overCountTeamATextView.setText(String.valueOf(overCount));
         overCountTeamBTextView.setText(String.valueOf(overCount));
 
+        // Set the ballCount to 0.
         ballCount = 0;
 
+        // Set number of wide ball delivered by both Team A and B to 0.
         wideBallTeamA = wideBallTeamB = 0;
         wideBallTeamATextView.setText(String.valueOf(wideBallTeamA));
         wideBallTeamBTextView.setText(String.valueOf(wideBallTeamB));
 
+        // Set number of no ball delivered by both Team A and B to 0.
         noBallTeamB = noBallTeamA = 0;
         noBallTeamATextView.setText(String.valueOf(noBallTeamA));
         noBallTeamBTextView.setText(String.valueOf(noBallTeamB));
@@ -692,7 +718,7 @@ public class MainActivity extends AppCompatActivity {
             if (enable) {
                 button.setTextColor(ContextCompat.getColor(this, R.color.colorType));
             } else {
-                button.setTextColor(ContextCompat.getColor(this, R.color.colorDisabled));
+                button.setTextColor(ContextCompat.getColor(this, R.color.colorBoundary));
             }
         }
     }

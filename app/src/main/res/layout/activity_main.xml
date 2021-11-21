@@ -92,8 +92,8 @@
                             style="@style/TypeStyle"
                             android:text="@string/defaultDeliveries" />
                     </LinearLayout>
-                </LinearLayout>
 
+                </LinearLayout>
 
                 <!--Team A No and wide balls-->
                 <LinearLayout style="@style/BasicLayout">
@@ -124,6 +124,7 @@
                             style="@style/TypeStyle"
                             android:text="@string/defaultWide" />
                     </LinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -198,6 +199,7 @@
                             style="@style/TypeStyle"
                             android:text="@string/defaultDeliveries" />
                     </LinearLayout>
+
                 </LinearLayout>
 
                 <!--Team B No and wide balls-->
@@ -230,24 +232,12 @@
                             style="@style/TypeStyle"
                             android:text="@string/defaultWide" />
                     </LinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
-
-        <!--2nd Innings Status-->
-        <TextView
-            style="@style/BasicView"
-            android:layout_marginVertical="8dp"
-            android:background="@drawable/shape_rectangle"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            tools:text="Need 17 runs to win from 6 balls." />
 
         <!--Shows the winning team of the match.-->
         <LinearLayout
@@ -450,6 +440,7 @@
 
         </LinearLayout>
 
+        <!--Reset Button-->
         <Button
             android:id="@+id/button_reset"
             android:layout_width="wrap_content"

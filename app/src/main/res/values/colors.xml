@@ -5,13 +5,10 @@
     <color name="colorText">#A6FFFFFF</color>
 
     <!--UI Elements-->
-    <color name="colorBoundary">#70FFFFFF</color>
+    <color name="colorBoundary">#3CFFFFFF</color>
     <color name="colorBackground">#36FFFFFF</color>
     <color name="colorWicket">#5CC62828</color>
 
     <!--Text Elements-->
     <color name="colorType">@android:color/white</color>
-
-
-    <color name="colorDisabled">#3CFFFFFF</color>
 </resources>
