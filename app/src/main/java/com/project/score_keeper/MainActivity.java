@@ -20,7 +20,7 @@ import android.widget.TextView;
  * 4. Number of "Wide" deliveries.
  * 5. Number of "No Ball" deliveries.
  * <p>
- * Based on basic rules of Cricket, a Team (in some cases both) is the Winner.
+ * If the match turns out to be a DRAW, both Teams are awarded as Winners.
  */
 public class MainActivity extends AppCompatActivity {
 
